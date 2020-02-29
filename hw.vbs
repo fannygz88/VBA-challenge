@@ -1,5 +1,7 @@
 
 
+
+
 Sub WorksheetLoop()
              '-------------------------------------------------------------------------------
                       'Part I
@@ -60,7 +62,7 @@ Sub WorksheetLoop()
          'MsgBox Str(lRow)
          'Find the last non-blank cell in row 1
          lCol = Cells(1, Columns.Count).End(xlToLeft).Column
-         'MsgBox Str(lCol)            
+         'MsgBox Str(lCol)
             
          'variable for ychange
          f = 2
@@ -69,8 +71,8 @@ Sub WorksheetLoop()
           
             
          'loop for compare the rows in the column ticker
-         For j = 2 To lRow             
-             If Cells(j, 1).Value <> Cells(j + 1, 1) Then              
+         For j = 2 To lRow
+             If Cells(j, 1).Value <> Cells(j + 1, 1) Then
                  ' sume the valume
                  volume = volume + Cells(j, 7).Value
                  'MsgBox Str(volume)
@@ -79,19 +81,21 @@ Sub WorksheetLoop()
                  u_ticker = Cells(j, 1).Value
                  'ychange
                  open_price = Cells(f, 3).Value
-                     if open_price =0 Then
-                        open_price= 0.0000001
-
-                     end if
-                                                                 
+                                                                                     
                  'MsgBox Str(open_price)
                  close_price = Cells(j, 6).Value
+                 If open_price = 0 Then
+                        open_price = 0.0000001
+                        close_price = 0.0000001
+
+                     End If
                    'MsgBox Str(close_price)
                  ychange = close_price - open_price
                   
                  'MsgBox Str(close_price) & "-" & Str(open_price)
                     
                  'percentage change
+                 
                  pchange = ((close_price - open_price) / Abs(open_price))
                                        
                  'MsgBox (pchange)
@@ -156,7 +160,7 @@ Sub WorksheetLoop()
              
          lRow2 = Cells(Rows.Count, 10).End(xlUp).Row
          'For n = 2 To lRow2
-         '    If Cells(n, 11).Value = 0 Then              
+         '    If Cells(n, 11).Value = 0 Then
           '       Cells(n, 12).Value = 0
           '   End If
          'Next n
@@ -179,7 +183,7 @@ Sub WorksheetLoop()
          'MsgBox Str(lMaxV)
             
              
-         For m = 2 To lRow2                                    
+         For m = 2 To lRow2
              If Cells(m, 12).Value = lMax Then
              
                 ticker = Cells(m, 10).Value
@@ -238,5 +242,6 @@ Sub clean_info()
 
         Next I
   End Sub
+
 
 
